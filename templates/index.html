@@ -1,12 +1,71 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PixelDomination</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/reset.css' %}" type="text/css">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
 </head>
 <body>
-{% csrf_token %}
+  <div class="wrapper">
+    <header class="header">
+      <h1 class="header__title">PixelDomination</h1>
+    </header>
+    <main class="main">
+      <aside class="best-work">
+        <figure class="best-work__box">
+          <img class="best-work__img" src="{% static 'img/best.png' %}" alt="фото лучшей работы за неделю">
+          <figcaption>Лучшый pixel art за неделю</figcaption>
+        </figure>
+      </aside>
+      <section class="welcome">
+        <div class="container">
+          <p class="welcome__text">Добро пожаловать в PixelDomination! Творите, соревнуйтесь, побеждайте.</p>
+          <!-- <div class="welcome__buttons">
+            <button class="welcome__btn">Войти</button>
+            <a href="canvas.html" class="welcome__btn welcome__btn--primary">Начать игру</a>
+          </div> -->
+        </div>
+      </section>
+      <form class="form form--active" id="login-form">
+        <span class="input-span">
+          <label for="login-email" class="label">Email</label>
+          <input type="email" name="login-email" id="login-email" required/></span>
+        <span class="input-span">
+          <label for="login-password" class="label">Пароль</label>
+          <input type="password" name="login-password" id="login-password" required/></span>
+        <span class="span"><a href="#">Забыли пароль?</a></span>
+        <input class="submit" type="submit" value="Log in" />
+        <span class="span">Еще нет аккаунта? <button id="show-reg" type="button">Зарегеструйтесь</button></span>
+      </form>
+      
+      <form class="form" id="reg-form">
+        <span class="input-span">
+          <label for="reg-email" class="label">Email</label>
+          <input type="email" name="reg-email" id="reg-email" required/></span>
+        <span class="input-span">
+          <label for="reg-nickname" class="label">Никнейм</label>
+          <input type="text" name="reg-nickname" id="reg-nickname" required/></span>
+        <span class="input-span">
+          <label for="reg-password" class="label">Пароль</label>
+          <input type="password" name="reg-password" id="reg-password" required/></span>
+        <span class="input-span">
+          <label for="reg-confirm-password" class="label">Повторите пароль</label>
+          <input type="password" name="reg-confirm-password" id="reg-confirm-password" required/></span>
+        <span class="span"><a href="#">Забыли пароль?</a></span>
+        <input class="submit" type="submit" value="Sign up" />
+        <span class="span">Уже есть аккаунт? <button id="show-login" type="button">Войдите</button></span>
+      </form>  
+    </main>
+    <footer class="footer">
+      <p>&copy; 2024 PixelDomination</p>
+    </footer>
+  </div>
 
-Lorem ipsum
 </body>
 </html>

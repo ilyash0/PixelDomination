@@ -22,7 +22,7 @@ class CanvasWebSocketConsumer(AsyncWebsocketConsumer):
 
         canvas_state = await self.get_canvas_state(self.canvas_id)
         await self.send(text_data=dumps({
-            'canvas_state': canvas_state
+            'canvasState': canvas_state
         }))
 
     async def disconnect(self, close_code):
@@ -35,7 +35,7 @@ class CanvasWebSocketConsumer(AsyncWebsocketConsumer):
     async def receive(self, text_data):
         data = loads(text_data)
         canvas_id = data['canvas_id']
-        pixel_data = data['pixel_data']
+        pixel_data = data['pixelData']
 
         # Update canvas in the database
         await self.update_canvas_state(canvas_id, pixel_data)
@@ -45,15 +45,15 @@ class CanvasWebSocketConsumer(AsyncWebsocketConsumer):
             self.room_group_name,
             {
                 'type': 'canvas_update',
-                'pixel_data': pixel_data
+                'pixelData': pixel_data
             }
         )
 
     async def canvas_update(self, event):
         # Send pixel data to WebSocket client
-        pixel_data = event['pixel_data']
+        pixel_data = event['pixelData']
         await self.send(text_data=dumps({
-            'pixel_data': pixel_data
+            'pixelData': pixel_data
         }))
 
     @sync_to_async
