@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PixelDomination</title>
+</head>
+<body>
+<div class="wrapper">
+    <header class="header">PixelDomination</header>
+    <main class="main">
+        <h1 class="main__title">Пиксельное полотно 50x50</h1>
+        <section class="controls">
+            <label for="color-picker">Выберите цвет:</label>
+            <div id="palette">
+                <button class="color" style="background-color: #FF0000;" data-color="#FF0000"></button>
+                <button class="color" style="background-color: #00FF00;" data-color="#00FF00"></button>
+                <button class="color" style="background-color: #0000FF;" data-color="#0000FF"></button>
+            </div>
+            <input type="color" id="color-picker" value="#000000">
+            <button id="export">Экспортировать</button>
+        </section>
+        <div id="canvas-container">
+            <canvas id="pixel-canvas" width="500" height="500"></canvas>
+        </div>
+        <a href="index.html" class="btn">Вернуться на главную</a>
+    </main>
+    <footer class="footer"><p>&copy; 2024 PixelDomination</p></footer>
+</div>
+
+<script>
+    const canvas = document.getElementById('pixel-canvas');
+    const ctx = canvas.getContext('2d');
+    const palette = document.getElementById('palette');
+    const colorPicker = document.getElementById('color-picker');
+
+    let selectedColor = '#000000';
+    const websocketUrl = `ws://${window.location.host}/ws/canvas/0/`;
+    const socket = new WebSocket(websocketUrl);
+
+    // Инициализация полотна
+    const canvasWidth = canvas.width;
+    const canvasHeight = canvas.height;
+    const pixelSize = 10; // Размер одного пикселя
+
+    // Обработчик выбора цвета
+    palette.addEventListener('click', (e) => {
+        if (e.target.classList.contains('color')) {
+            selectedColor = e.target.dataset.color;
+        }
+    });
+
+    colorPicker.addEventListener('input', (e) => {
+        selectedColor = e.target.value;
+    });
+
+    // Рисование на холсте
+    canvas.addEventListener('click', (e) => {
+        const rect = canvas.getBoundingClientRect();
+        const x = Math.floor((e.clientX - rect.left) / pixelSize);
+        const y = Math.floor((e.clientY - rect.top) / pixelSize);
+
+        // Рисуем пиксель локально
+        ctx.fillStyle = selectedColor;
+        ctx.fillRect(x * pixelSize, y * pixelSize, pixelSize, pixelSize);
+
+        // Отправляем изменения через WebSocket
+        const pixelData = {x, y, color: selectedColor};
+        socket.send(JSON.stringify({pixel_data: pixelData, canvas_id: 0}));
+    });
+
+    // Получение обновлений через WebSocket
+    socket.onmessage = (event) => {
+        const data = JSON.parse(event.data);
+
+        if (data.canvas_state) {
+            // Отрисовка начального состояния
+            const canvasState = data.canvas_state;
+            for (const [key, value] of Object.entries(canvasState)) {
+                const {x, y, color} = value;
+                ctx.fillStyle = color;
+                ctx.fillRect(x * pixelSize, y * pixelSize, pixelSize, pixelSize);
+            }
+        }
+
+        if (data.pixel_data) {
+            const {x, y, color} = data.pixel_data;
+            // Рисуем обновления на холсте
+            ctx.fillStyle = color;
+            ctx.fillRect(x * pixelSize, y * pixelSize, pixelSize, pixelSize);
+        }
+    };
+
+    // Экспорт полотна
+    document.getElementById('export').addEventListener('click', () => {
+        const link = document.createElement('a');
+        link.download = 'canvas.png';
+        link.href = canvas.toDataURL();
+        link.click();
+    });
+</script>
+</body>
+</html>
