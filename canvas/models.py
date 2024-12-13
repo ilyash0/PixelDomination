@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth import get_user_model
+from django.db.models.signals import post_migrate
+from django.dispatch import receiver
 
 User = get_user_model()
 
@@ -16,10 +18,6 @@ class Canvas(models.Model):
 
 
 # Создание общего полотна с ID 0 при запуске миграций
-from django.db.models.signals import post_migrate
-from django.dispatch import receiver
-
-
 @receiver(post_migrate)
 def create_default_canvas(sender, **kwargs):
     if not Canvas.objects.filter(id=0).exists():

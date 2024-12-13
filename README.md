@@ -1,4 +1,5 @@
 # Pixel Dominator
+[![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 ![GitHub License](https://img.shields.io/github/license/ilyash0/TASKILLS2024)
 
 Интерактивная платформа для рисования пикселей в реальном времени. Пользователи могут рисовать, соревноваться и создавать уникальные произведения искусства.
