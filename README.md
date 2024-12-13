@@ -8,8 +8,8 @@
 
 ### 1. Склонируйте репозиторий
 ```bash
-git clone <URL репозитория>
-cd <название папки>
+git clone https://github.com/ilyash0/PixelDomination.git
+cd PixelDomination
 ```
 
 ### 2. Установите зависимости
