@@ -82,7 +82,7 @@ canvas.addEventListener("click", (event) => {
         redrawCanvas();
 
         // Отправляем изменения через WebSocket
-        SOCKET.send(JSON.stringify({pixel_data: {x, y, color: currentColor}, canvas_id: 0}));
+        SOCKET.send(JSON.stringify({pixelData: {x, y, color: currentColor}, canvas_id: 0}));
     }
 });
 
