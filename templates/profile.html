@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+</head>
+<body>
+    <h1>Welcome, {{ user_profile.username }}</h1>
+    <p>Last login: {{ user_profile.last_login }} по МСК</p>
+    <p>Pixels Colored: {{ user_profile.pixels_colored }}</p>
+    <a href="/logout/">Logout</a>
+</body>
+</html>
