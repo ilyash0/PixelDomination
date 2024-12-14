@@ -15,22 +15,18 @@
 <body>
 <div class="wrapper">
     <header class="header">
-        <h1 class="header__title">PixelDomination</h1>
+      <div class="container">
+        <div class="header__inner">
+          <a  href="/" class="header__link"><img src="{% static 'img/logo.svg' %}" alt="logo" class="header__img"></a>    
+          <h1 class="header__title">PixelDomination</h1>
+        </div>
+      </div>
     </header>
     <main class="main">
-        <aside class="best-work">
-            <figure class="best-work__box">
-                <img class="best-work__img" src="{% static 'img/best.png' %}" alt="фото лучшей работы за неделю">
-                <figcaption>Лучший pixel art за неделю</figcaption>
-            </figure>
-        </aside>
         <section class="welcome">
             <div class="container">
-                <p class="welcome__text">Добро пожаловать в PixelDomination! Творите, соревнуйтесь, побеждайте.</p>
-                <!-- <div class="welcome__buttons">
-                  <button class="welcome__btn">Войти</button>
-                  <a href="canvas.html" class="welcome__btn welcome__btn--primary">Начать игру</a>
-                </div> -->
+                <h2 class="welcome__title title--active" id="title-login">Вход</h2>
+                <h2 class="welcome__title" id="title-register">Регистрация</h2>
             </div>
             {% if messages %}
                 {% for message in messages %}
