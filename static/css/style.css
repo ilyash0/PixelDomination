@@ -270,11 +270,11 @@ p {
 .profile {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 50px;
-  justify-items: center;
+  grid-template-rows: 1fr 1fr;
+  gap: 100px 150px;
 }
 
-.profile__stats {
+.profile__section {
   background-color: #1e1e2f; 
   color: #fff; 
   padding: 20px;
@@ -284,7 +284,18 @@ p {
   max-width: 500px;
 }
 
-.profile__stats-title {
+#profile-stats,
+#profile-global {
+  justify-self: end;
+}
+
+#profile-ranking,
+#profile-private {
+  justify-self: start;
+}
+
+
+.profile__section-title {
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 15px;
@@ -292,7 +303,7 @@ p {
   color: #f39c12;
 }
 
-.profile__stats-subtitle {
+.profile__section-subtitle {
   font-size: 18px;
   font-weight: bold;
   margin-bottom: 10px;
@@ -301,13 +312,13 @@ p {
 }
 
 
-.profile__stats-list {
+.profile__section-list {
   list-style: none; 
   padding: 0;
   margin: 0;
 }
 
-.profile__stats-list li {
+.profile__section-list li {
   display: flex; 
   justify-content: space-between; 
   align-items: center;
@@ -315,16 +326,16 @@ p {
   border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
 }
 
-.profile__stats-list li:last-child {
+.profile__section-list li:last-child {
   border-bottom: none;
   margin-bottom: 10px;
 }
 
-.profile__stats-list span {
+.profile__section-list span {
   color: #ccc;
 }
 
-.profile__stats-list strong {
+.profile__section-list strong {
   color: #4cd137; 
   font-size: 18px;
 }
@@ -353,6 +364,59 @@ p {
   font-size: 14px;
   margin-top: 5px;
 }
+
+.profile__section-img {
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  border-radius: 8px;
+}
+
+.profile__private-canvases {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 20px;
+}
+
+.profile__canvas-item {
+  width: 45%;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.profile__canvas-item img {
+  width: 100%;
+  max-width: 180px;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.btn-view-canvas {
+  background-color: #f39c12;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  display: inline-block;
+}
+
+.btn-create-canvas {
+  background-color: #4cd137;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  display: block;
+  margin: 0 auto;
+}
+
 .footer {
   min-height: 50px;
 }
