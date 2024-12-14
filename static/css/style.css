@@ -68,7 +68,7 @@ body {
 }
 
 .best-work__box {
-  position: fixed;
+  position: absolute;
   top: 300px;
   left: 70px;
   width: 300px;
