@@ -45,6 +45,10 @@ body {
   justify-self: start;
 }
 
+.header__link {
+  width: 50px;
+}
+
 .header__logout {
   font-size: 30px;
   justify-self: end;
@@ -266,7 +270,6 @@ p {
 .profile {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
   gap: 50px;
   justify-items: center;
 }
@@ -289,6 +292,15 @@ p {
   color: #f39c12;
 }
 
+.profile__stats-subtitle {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: center;
+  color: #f39c12;
+}
+
+
 .profile__stats-list {
   list-style: none; 
   padding: 0;
@@ -304,7 +316,8 @@ p {
 }
 
 .profile__stats-list li:last-child {
-  border-bottom: none; 
+  border-bottom: none;
+  margin-bottom: 10px;
 }
 
 .profile__stats-list span {
@@ -316,6 +329,30 @@ p {
   font-size: 18px;
 }
 
+.profile__user-rank {
+  text-align: center;
+  font-size: 18px;
+  background-color: #292942; 
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.profile__user-rank span {
+  display: block;
+  color: #ccc;
+}
+
+.profile__user-rank strong {
+  font-size: 24px;
+  color: #f39c12;
+}
+
+.profile__user-rank small {
+  display: block;
+  color: #ccc;
+  font-size: 14px;
+  margin-top: 5px;
+}
 .footer {
   min-height: 50px;
 }

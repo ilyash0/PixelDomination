@@ -17,7 +17,7 @@
     <header class="header">
         <div class="container">
             <div class="header__inner">
-              <a  href="/"><img src="{% static 'img/logo.svg' %}" alt="logo" class="header__img"></a>    
+              <a  href="/" class="header__link"><img src="{% static 'img/logo.svg' %}" alt="logo" class="header__img"></a>    
               <h1 class="header__title">Мой профиль</h1>
               <a href="/logout/" class="header__logout">Выйти</a>
             </div>
@@ -26,22 +26,33 @@
     <main class="main">
       <div class="profile">
         <section class="profile__stats" id="profile-stats">
-          <h2 class="profile__stats-title">Статистика</h2>
+          <h2 class="profile__stats-title">Профиль игрока</h2>
+          <ul class="profile__stats-list">
+            <li><span>Игрок:</span> <strong>master</strong></li>
+            <li><span>Дата регистрации:</span> <strong>13.12.2024</strong></li>
+            <li><span>Последний визит:</span> <strong>14.12.2024</strong></li>
+          </ul>
+          <h3 class="profile__stats-subtitle">Игровая активность</h3>
           <ul class="profile__stats-list">
             <li><span>Сыграно игр:</span> <strong>42</strong></li>
             <li><span>Закрашенные пиксели:</span> <strong>{{ user_profile.pixels_colored }}</strong></li>
-            <li><span>Больше всего закрашенных пикселей:</span> <strong>250</strong></li>
+            <li><span>Время в игре:</span> <strong>30 минут</strong></li>
           </ul>
-      </section>
-      <section class="profile__stats">
+        </section>
+        <section class="profile__stats">
           <h2 class="profile__stats-title">Рейтинг игроков</h2>
           <ul class="profile__stats-list">
-            <li><span>1. Никита:</span> <strong>1050 очков</strong></li>
-            <li><span>2. Иван:</span> <strong>980 очков</strong></li>
-            <li><span>3. Анна:</span> <strong>900 очков</strong></li>
-            <li><span>4. Ольга:</span> <strong>850 очков</strong></li>
-            <li><span>5. Сергей:</span> <strong>800 очков</strong></li>
+            <li><span>1. Никита:</span> <strong>1050 пикселей</strong></li>
+            <li><span>2. Иван:</span> <strong>980 пикселей</strong></li>
+            <li><span>3. Анна:</span> <strong>900 пикселей</strong></li>
+            <li><span>4. Ольга:</span> <strong>850 пикселей</strong></li>
+            <li><span>5. Сергей:</span> <strong>800 пикселей</strong></li>
           </ul>
+          <div class="profile__user-rank">
+            <span>Ваше место:</span>
+            <strong>#12</strong>
+            <small>из 250 игроков</small>
+          </div>
         </section>
       </div>
         
