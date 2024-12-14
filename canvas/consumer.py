@@ -77,7 +77,7 @@ class CanvasWebSocketConsumer(AsyncWebsocketConsumer):
     @sync_to_async
     def update_canvas_state(self, canvas_id, pixel_data: dict):
         canvas = Canvas.objects.get(id=canvas_id)
-        canvas.state[f'{pixel_data['x']}_{pixel_data['y']}'] = pixel_data['color']
+        canvas.state[f"{pixel_data['x']}_{pixel_data['y']}"] = pixel_data['color']
         canvas.updated_at = now()
         canvas.save()
 
