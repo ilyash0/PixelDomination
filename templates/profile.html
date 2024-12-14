@@ -17,69 +17,68 @@
     <header class="header">
         <div class="container">
             <div class="header__inner">
-              <a  href="/" class="header__link"><img src="{% static 'img/logo.svg' %}" alt="logo" class="header__img"></a>    
-              <h1 class="header__title">Мой профиль</h1>
-              <a href="/logout/" class="header__logout">Выйти</a>
+                <a href="/" class="header__link"><img src="{% static 'img/logo.svg' %}" alt="logo" class="header__img"></a>
+                <h1 class="header__title">Мой профиль</h1>
+                <a href="/logout/" class="header__logout">Выйти</a>
             </div>
         </div>
     </header>
     <main class="main">
-      <div class="profile">
-        <section class="profile__section" id="profile-stats">
-          <h2 class="profile__section-title">Профиль игрока</h2>
-          <ul class="profile__section-list">
-            <li><span>Игрок:</span> <strong>{{ user_profile.username }}</strong></li>
-            <li><span>Дата регистрации:</span> <strong>{{ user_profile.date_joined }}</strong></li>
-            <li><span>Последний визит:</span> <strong>{{ user_profile.last_login }}</strong></li>
-          </ul>
-          <h3 class="profile__section-subtitle">Игровая активность</h3>
-          <ul class="profile__section-list">
-            <li><span>Сыграно игр:</span> <strong>{{ user_profile.games_played }}</strong></li>
-            <li><span>Закрашенные пиксели:</span> <strong>{{ user_profile.pixels_colored }}</strong></li>
-            <li><span>Время в игре:</span> <strong>{{ user_profile.time_played }} минут(ы)</strong></li>
-          </ul>
-        </section>
-        <section class="profile__section" id="profile-ranking">
-          <h2 class="profile__section-title">Рейтинг игроков</h2>
-          <ul class="profile__section-list">
-            <li><span>1. Никита:</span> <strong>1050 пикселей</strong></li>
-            <li><span>2. Иван:</span> <strong>980 пикселей</strong></li>
-            <li><span>3. Анна:</span> <strong>900 пикселей</strong></li>
-            <li><span>4. Ольга:</span> <strong>850 пикселей</strong></li>
-            <li><span>5. Сергей:</span> <strong>800 пикселей</strong></li>
-          </ul>
-          <div class="profile__user-rank">
-            <span>Ваше место:</span>
-            <strong>#12</strong>
-            <small>из {{ users_count }} игроков</small>
-          </div>
-        </section>
-        <section class="profile__section" id="profile-global">
-          <h2 class="profile__section-title">Общее полотно</h2>
-          <div class="profile__section">
-            <img src="{% static 'img/best.png' %}" alt="Общее полотно" class="profile__section-img">
-            <a class="btn-view-canvas" href="/canvas/0/">Редактировать</a>
-          </div>
-        </section>
-        <section class="profile__section" id="profile-private">
-          <h2 class="profile__section-title">Частные полотна</h2>
-          <div class="profile__private-canvases">
-            <div class="profile__canvas-item">
-              <img src="{% static 'img/best.png' %}" alt="Частное полотно 1">
-              <a class="btn-view-canvas" href="/canvas/1/">Редактировать</a>
-            </div>
-            <div class="profile__canvas-item">
-              <img src="{% static 'img/best.png' %}" alt="Частное полотно 2">
-              <a class="btn-view-canvas" href="/canvas/2/">Редактировать</a>
-            </div>
-          </div>
-          <button class="btn-create-canvas">Создать новое полотно</button>
-        </section>
-      </div>
+        <div class="profile">
+            <section class="profile__section" id="profile-stats">
+                <h2 class="profile__section-title">Профиль игрока</h2>
+                <ul class="profile__section-list">
+                    <li><span>Игрок:</span> <strong>{{ user_profile.username }}</strong></li>
+                    <li><span>Дата регистрации:</span> <strong>{{ user_profile.date_joined }}</strong></li>
+                    <li><span>Последний визит:</span> <strong>{{ user_profile.last_login }}</strong></li>
+                </ul>
+                <h3 class="profile__section-subtitle">Игровая активность</h3>
+                <ul class="profile__section-list">
+                    <li><span>Сыграно игр:</span> <strong>{{ user_profile.games_played }}</strong></li>
+                    <li><span>Закрашенные пиксели:</span> <strong>{{ user_profile.pixels_colored }}</strong></li>
+                    <li><span>Время в игре:</span> <strong>{{ user_profile.time_played }} минут(ы)</strong></li>
+                </ul>
+            </section>
+            <section class="profile__section" id="profile-ranking">
+                <h2 class="profile__section-title">Рейтинг игроков</h2>
+                <ul class="profile__section-list">
+                    {% for user in rating %}
+                        <li><span>{{ user.rank }}. {{ user.username }}:</span> <strong>{{ user.pixels_colored }}
+                            пикселей</strong></li>
+                    {% endfor %}
+                </ul>
+                <div class="profile__user-rank">
+                    <span>Ваше место:</span>
+                    <strong>#{{ my_rank }}</strong>
+                    <small>из {{ users_count }} игроков</small>
+                </div>
+            </section>
+            <section class="profile__section" id="profile-global">
+                <h2 class="profile__section-title">Общее полотно</h2>
+                <div class="profile__section">
+                    <img src="{% static 'img/best.png' %}" alt="Общее полотно" class="profile__section-img">
+                    <a class="btn-view-canvas" href="/canvas/0/">Редактировать</a>
+                </div>
+            </section>
+            <section class="profile__section" id="profile-private">
+                <h2 class="profile__section-title">Частные полотна</h2>
+                <div class="profile__private-canvases">
+                    <div class="profile__canvas-item">
+                        <img src="{% static 'img/best.png' %}" alt="Частное полотно 1">
+                        <a class="btn-view-canvas" href="/canvas/1/">Редактировать</a>
+                    </div>
+                    <div class="profile__canvas-item">
+                        <img src="{% static 'img/best.png' %}" alt="Частное полотно 2">
+                        <a class="btn-view-canvas" href="/canvas/2/">Редактировать</a>
+                    </div>
+                </div>
+                <button class="btn-create-canvas">Создать новое полотно</button>
+            </section>
+        </div>
     </main>
     <footer class="footer"><p>&copy; 2024 PixelDomination</p></footer>
-  </div>
+</div>
 
-  <script src="{% static 'js/profile.js' %}"></script>
+<script src="{% static 'js/profile.js' %}"></script>
 </body>
 </html>

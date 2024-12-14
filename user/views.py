@@ -1,4 +1,6 @@
 from django.contrib import messages
+from django.db.models import Window, F
+from django.db.models.functions import RowNumber
 from django.shortcuts import render, redirect
 from django.views.generic import View
 from django.contrib.auth import authenticate, login, logout
@@ -61,5 +63,13 @@ class UserProfileView(LoginRequiredMixin, View):
 
     def get(self, request):
         user = request.user
+        rating = CustomUser.objects.annotate(
+            rank=Window(
+                expression=RowNumber(),  order_by=F('pixels_colored').desc()
+            )
+        ).order_by('-pixels_colored')
+        my_rank = rating.filter(username=user.username).first().rank
         users_count = CustomUser.objects.all().count()
-        return render(request, self.template_name, {'user_profile': user, 'users_count': users_count})
+        return render(request, self.template_name,
+                      {'user_profile': user, 'users_count': users_count,
+                       'rating': rating[:5], 'my_rank': my_rank})
