@@ -2,29 +2,31 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PixelDomination</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="{% static 'css/reset.css' %}">
-  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PixelDomination</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-  <div class="wrapper">
+<div class="wrapper">
     <header class="header">
-      <h1>Мой профиль</h1>
+        <h1>Мой профиль</h1>
     </header>
     <main class="main">
-      <section id="profile-stats" class="profile">
-        <h2>Статистика</h2>
-        <p>Закрашенные пиксели: {{ user_profile.pixels_colored }}</p>
-      </section>
-      <a href="/index/" class="btn">Вернуться на главную</a>
+        <section id="profile-stats" class="profile">
+            <h2>Статистика</h2>
+            <p>Закрашенные пиксели: {{ user_profile.pixels_colored }}</p>
+        </section>
+        <a href="/" class="btn">Вернуться на главную</a><br>
+        <a href="/logout/" class="btn">Выйти</a>
     </main>
     <footer class="footer"><p>&copy; 2024 PixelDomination</p></footer>
-  </div>
+</div>
 
 </body>
 </html>
