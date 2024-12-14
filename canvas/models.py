@@ -14,7 +14,11 @@ class Canvas(models.Model):
     owner = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True, verbose_name="Создатель полотна")
 
     def __str__(self):
-        return f"Canvas {self.id}"
+        return f"Полотно {self.id}"
+
+    class Meta:
+        verbose_name = "Полотно"
+        verbose_name_plural = "Полотна"
 
 
 # Создание общего полотна с ID 0 при запуске миграций
