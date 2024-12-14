@@ -47,6 +47,7 @@ DB_PORT="5432"
    ```
 4. Скачайте и запустите redis
    ```bash
+   sudo apt update
    sudo apt-get install redis-server
    sudo service redis-server start
    ```
