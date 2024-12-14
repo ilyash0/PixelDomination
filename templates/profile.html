@@ -28,15 +28,15 @@
         <section class="profile__section" id="profile-stats">
           <h2 class="profile__section-title">Профиль игрока</h2>
           <ul class="profile__section-list">
-            <li><span>Игрок:</span> <strong>master</strong></li>
-            <li><span>Дата регистрации:</span> <strong>13.12.2024</strong></li>
-            <li><span>Последний визит:</span> <strong>14.12.2024</strong></li>
+            <li><span>Игрок:</span> <strong>{{ user_profile.username }}</strong></li>
+            <li><span>Дата регистрации:</span> <strong>{{ user_profile.date_joined }}</strong></li>
+            <li><span>Последний визит:</span> <strong>{{ user_profile.last_login }}</strong></li>
           </ul>
           <h3 class="profile__section-subtitle">Игровая активность</h3>
           <ul class="profile__section-list">
-            <li><span>Сыграно игр:</span> <strong>42</strong></li>
+            <li><span>Сыграно игр:</span> <strong>{{ user_profile.games_played }}</strong></li>
             <li><span>Закрашенные пиксели:</span> <strong>{{ user_profile.pixels_colored }}</strong></li>
-            <li><span>Время в игре:</span> <strong>30 минут</strong></li>
+            <li><span>Время в игре:</span> <strong>{{ user_profile.time_played }} минут(ы)</strong></li>
           </ul>
         </section>
         <section class="profile__section" id="profile-ranking">
@@ -51,7 +51,7 @@
           <div class="profile__user-rank">
             <span>Ваше место:</span>
             <strong>#12</strong>
-            <small>из 250 игроков</small>
+            <small>из {{ users_count }} игроков</small>
           </div>
         </section>
         <section class="profile__section" id="profile-global">

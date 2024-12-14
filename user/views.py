@@ -61,4 +61,5 @@ class UserProfileView(LoginRequiredMixin, View):
 
     def get(self, request):
         user = request.user
-        return render(request, self.template_name, {'user_profile': user})
+        users_count = CustomUser.objects.all().count()
+        return render(request, self.template_name, {'user_profile': user, 'users_count': users_count})

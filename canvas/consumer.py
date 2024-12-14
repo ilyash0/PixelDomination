@@ -1,3 +1,4 @@
+from datetime import datetime
 from json import loads, dumps
 
 from channels.generic.websocket import AsyncWebsocketConsumer
@@ -14,6 +15,7 @@ class CanvasWebSocketConsumer(AsyncWebsocketConsumer):
         self.room_group_name: str = None
         self.canvas_id: int = None
         self.user: CustomUser = None
+        self.time_start: datetime = now()
 
     async def connect(self):
         self.canvas_id = self.scope['url_route']['kwargs']['canvas_id']
@@ -38,11 +40,18 @@ class CanvasWebSocketConsumer(AsyncWebsocketConsumer):
             self.channel_name
         )
 
+        time_played = (now() - self.time_start).seconds//60
+        if time_played > 0:
+            self.user.games_played += 1
+            self.user.time_played += time_played
+            await self.user.asave()
+
     async def receive(self, text_data):
         data = loads(text_data)
         canvas_id = data['canvas_id']
         pixel_data = data['pixelData']
-        await self.increment_user_pixel_count(1)
+        self.user.pixels_colored += 1
+        await self.user.asave()
 
         await self.update_canvas_state(canvas_id, pixel_data)
 
@@ -71,11 +80,6 @@ class CanvasWebSocketConsumer(AsyncWebsocketConsumer):
         canvas.state[f'{pixel_data['x']}_{pixel_data['y']}'] = pixel_data['color']
         canvas.updated_at = now()
         canvas.save()
-
-    @sync_to_async
-    def increment_user_pixel_count(self, count):
-        self.user.pixels_colored += count
-        self.user.save()
 
     @staticmethod
     def transform_record(record):
