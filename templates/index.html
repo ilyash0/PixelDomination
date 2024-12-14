@@ -17,48 +17,42 @@
     <header class="header">
         <div class="container">
             <div class="header__inner">
-              <a  href="/" class="header__link"><img src="{% static 'img/logo.svg' %}" alt="logo" class="header__img"></a>    
-              <h1 class="header__title">PixelDomination</h1>
-              <a href="/profile/" class="header__logout">Профиль</a>
+                <a href="/" class="header__link"><img src="{% static 'img/logo.svg' %}" alt="logo" class="header__img"></a>
+                <h1 class="header__title">PixelDomination</h1>
+                <a href="/profile/" class="header__logout">Профиль</a>
             </div>
         </div>
     </header>
     <main class="main">
-      <section class="welcome">
-        <div class="container">
-            <p class="welcome__text">Добро пожаловать в PixelDomination! Творите, соревнуйтесь, побеждайте.</p>
+        <section class="welcome">
+            <div class="container">
+                <p class="welcome__text">Добро пожаловать в PixelDomination! Творите, соревнуйтесь, побеждайте.</p>
+            </div>
+        </section>
+        <div class="box">
+            <aside class="best-work">
+                <figure class="best-work__box">
+                    <img class="best-work__img" src="{% static 'img/best.png' %}" alt="фото лучшей работы за неделю">
+                    <figcaption>Лучший pixel art за неделю</figcaption>
+                </figure>
+            </aside>
+            <section class="profile__section profile__section--big" id="profile-global">
+                <h2 class="profile__section-title">Общее полотно</h2>
+                <div class="profile__section profile__section--big">
+                    <img src="{% static 'img/best.png' %}" alt="Общее полотно" class="profile__section-img">
+                    <a class="btn-view-canvas" href="/canvas/0/">Начните рисовать</a>
+                </div>
+            </section>
+            <section class="profile__section profile__section--below" id="profile-ranking">
+                <h2 class="profile__section-title">Рейтинг игроков</h2>
+                <ul class="profile__section-list">
+                    {% for user in rating %}
+                        <li><span>{{ user.rank }}. {{ user.username }}:</span> <strong>{{ user.pixels_colored }}
+                            пикселей</strong></li>
+                    {% endfor %}
+                </ul>
+            </section>
         </div>
-        {% if messages %}
-            {% for message in messages %}
-                <p style="color: red;">{{ message }}</p>
-            {% endfor %}
-        {% endif %}
-      </section>
-      <div class="box">
-        <aside class="best-work">
-          <figure class="best-work__box">
-              <img class="best-work__img" src="{% static 'img/best.png' %}" alt="фото лучшей работы за неделю">
-              <figcaption>Лучший pixel art за неделю</figcaption>
-          </figure>
-        </aside>
-        <section class="profile__section profile__section--big" id="profile-global">
-          <h2 class="profile__section-title">Общее полотно</h2>
-          <div class="profile__section profile__section--big">
-            <img src="{% static 'img/best.png' %}" alt="Общее полотно" class="profile__section-img">
-            <a class="btn-view-canvas" href="/canvas/0/">Начните рисовать</a>
-          </div>
-        </section>
-        <section class="profile__section profile__section--below" id="profile-ranking">
-          <h2 class="profile__section-title">Рейтинг игроков</h2>
-          <ul class="profile__section-list">
-            <li><span>1. Никита:</span> <strong>1050 пикселей</strong></li>
-            <li><span>2. Иван:</span> <strong>980 пикселей</strong></li>
-            <li><span>3. Анна:</span> <strong>900 пикселей</strong></li>
-            <li><span>4. Ольга:</span> <strong>850 пикселей</strong></li>
-            <li><span>5. Сергей:</span> <strong>800 пикселей</strong></li>
-          </ul>
-        </section>
-      </div>
     </main>
     <footer class="footer">
         <p>&copy; 2024 PixelDomination</p>
