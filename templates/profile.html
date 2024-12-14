@@ -15,15 +15,36 @@
 <body>
 <div class="wrapper">
     <header class="header">
-        <h1>Мой профиль</h1>
+        <div class="container">
+            <div class="header__inner">
+              <a  href="/"><img src="{% static 'img/logo.svg' %}" alt="logo" class="header__img"></a>    
+              <h1 class="header__title">Мой профиль</h1>
+              <a href="/logout/" class="header__logout">Выйти</a>
+            </div>
+        </div>
     </header>
     <main class="main">
-        <section id="profile-stats" class="profile">
-            <h2>Статистика</h2>
-            <p>Закрашенные пиксели: {{ user_profile.pixels_colored }}</p>
+      <div class="profile">
+        <section class="profile__stats" id="profile-stats">
+          <h2 class="profile__stats-title">Статистика</h2>
+          <ul class="profile__stats-list">
+            <li><span>Сыграно игр:</span> <strong>42</strong></li>
+            <li><span>Закрашенные пиксели:</span> <strong>{{ user_profile.pixels_colored }}</strong></li>
+            <li><span>Больше всего закрашенных пикселей:</span> <strong>250</strong></li>
+          </ul>
+      </section>
+      <section class="profile__stats">
+          <h2 class="profile__stats-title">Рейтинг игроков</h2>
+          <ul class="profile__stats-list">
+            <li><span>1. Никита:</span> <strong>1050 очков</strong></li>
+            <li><span>2. Иван:</span> <strong>980 очков</strong></li>
+            <li><span>3. Анна:</span> <strong>900 очков</strong></li>
+            <li><span>4. Ольга:</span> <strong>850 очков</strong></li>
+            <li><span>5. Сергей:</span> <strong>800 очков</strong></li>
+          </ul>
         </section>
-        <a href="/" class="btn">Вернуться на главную</a><br>
-        <a href="/logout/" class="btn">Выйти</a>
+      </div>
+        
     </main>
     <footer class="footer"><p>&copy; 2024 PixelDomination</p></footer>
 </div>

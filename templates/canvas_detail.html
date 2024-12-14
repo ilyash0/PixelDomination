@@ -13,7 +13,15 @@
 </head>
 <body>
   <div class="wrapper">
-    <header class="header">PixelDomination</header>
+    <header class="header">
+      <div class="container">
+        <div class="header__inner">
+          <a  href="/"><img src="{% static 'img/logo.svg' %}" alt="logo" class="header__img"></a>    
+          <h1 class="header__title">PixelDomination</h1>
+          <a href="/profile/" class="header__logout">Профиль</a>
+        </div>
+      </div>
+    </header>
     <main class="main">
       <h1 class="main__title">Пиксельное полотно 50x50</h1>
       <section class="controls">

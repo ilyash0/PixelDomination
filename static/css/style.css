@@ -33,6 +33,23 @@ body {
   padding: 20px;
 }
 
+.header__inner {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+}
+
+.header__img {
+  width: 50px;
+  height: 50px;
+  justify-self: start;
+}
+
+.header__logout {
+  font-size: 30px;
+  justify-self: end;
+}
+
 .main {
   flex-grow: 1;
   padding: 50px;
@@ -244,6 +261,59 @@ canvas {
 
 p {
   margin-bottom: 30px;
+}
+
+.profile {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 50px;
+  justify-items: center;
+}
+
+.profile__stats {
+  background-color: #1e1e2f; 
+  color: #fff; 
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
+  min-width: 460px;
+  max-width: 500px;
+}
+
+.profile__stats-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  text-align: center;
+  color: #f39c12;
+}
+
+.profile__stats-list {
+  list-style: none; 
+  padding: 0;
+  margin: 0;
+}
+
+.profile__stats-list li {
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center;
+  padding: 10px 0; 
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
+}
+
+.profile__stats-list li:last-child {
+  border-bottom: none; 
+}
+
+.profile__stats-list span {
+  color: #ccc;
+}
+
+.profile__stats-list strong {
+  color: #4cd137; 
+  font-size: 18px;
 }
 
 .footer {
