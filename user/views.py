@@ -32,6 +32,7 @@ class RegisterView(View):
 
 class LoginView(View):
     def post(self, request):
+        logout(request)
         username = request.POST.get('login-username')
         password = request.POST.get('login-password')
         user = authenticate(request, username=username, password=password)
