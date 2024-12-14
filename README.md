@@ -34,12 +34,21 @@ DB_PORT="5432"
 ```
 2. Заполните пропуски своими данными
 
-### 4. Настройка базы данных
+### 4. Настройка баз данных
 1. Создайте базу данных PostgreSQL.
 2. Примените миграции для Django:
    ```bash
    python manage.py makemigrations
    python manage.py migrate
+   ```
+3. Если вы на Windows установите WSL (по умолчанию ставится Ubuntu, её и рекомендую)
+   ```bash
+   wsl --install
+   ```
+4. Скачайте и запустите redis
+   ```bash
+   sudo apt-get install redis-server
+   sudo service redis-server start
    ```
 
 ### 5. Запуск сервера
