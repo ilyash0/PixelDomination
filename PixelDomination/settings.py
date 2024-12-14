@@ -27,7 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 AUTH_USER_MODEL = 'user.CustomUser'
-LOGIN_URL = '/login/'
+LOGIN_URL = '/'
 
 # Application definition
 
