@@ -41,16 +41,26 @@ DB_PORT="5432"
    python manage.py makemigrations
    python manage.py migrate
    ```
-3. Если вы на Windows установите WSL (по умолчанию ставится Ubuntu, её и рекомендую)
-   ```bash
-   wsl --install
-   ```
-4. Скачайте и запустите redis
-   ```bash
-   sudo apt update
-   sudo apt-get install redis-server
-   sudo service redis-server start
-   ```
+
+[//]: # (3. Если вы на Windows установите WSL &#40;по умолчанию ставится Ubuntu, её и рекомендую&#41;)
+
+[//]: # (   ```bash)
+
+[//]: # (   wsl --install)
+
+[//]: # (   ```)
+
+[//]: # (4. Скачайте и запустите redis)
+
+[//]: # (   ```bash)
+
+[//]: # (   sudo apt update)
+
+[//]: # (   sudo apt-get install redis-server)
+
+[//]: # (   sudo service redis-server start)
+
+[//]: # (   ```)
 
 ### 5. Запуск сервера
 #### Для Django:
