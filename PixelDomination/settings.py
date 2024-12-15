@@ -91,7 +91,7 @@ CHANNEL_LAYERS = {
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.postgresql",
+        "ENGINE": "django.db.backends.mysql",
         "NAME": environ["DB_NAME"],
         "USER": environ["DB_USER"],
         "PASSWORD": environ["DB_PASSWORD"],
