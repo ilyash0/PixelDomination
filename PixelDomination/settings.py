@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from os import environ, path
 from pathlib import Path
-from urllib.parse import urlparse
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -90,16 +89,14 @@ CHANNEL_LAYERS = {
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-tmpPostgres = urlparse(environ["DATABASE_URL"])
-
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': tmpPostgres.path.replace('/', ''),
-        'USER': tmpPostgres.username,
-        'PASSWORD': tmpPostgres.password,
-        'HOST': tmpPostgres.hostname,
-        'PORT': 5432,
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": environ["DB_NAME"],
+        "USER": environ["DB_USER"],
+        "PASSWORD": environ["DB_PASSWORD"],
+        "HOST": environ["DB_HOST"],
+        "PORT": environ["DB_PORT"],
     }
 }
 
