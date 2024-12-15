@@ -1,1 +1,1 @@
-web: daphne PixelDomination.asgi:application -b 0.0.0.0 -p 8000
+web: python manage.py migrate && python -m gunicorn PixelDomination.asgi:application -k uvicorn.workers.UvicornWorker
