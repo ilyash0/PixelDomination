@@ -78,9 +78,7 @@ CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels_redis.core.RedisChannelLayer",
         "CONFIG": {
-            "hosts": [
-                "redis://default:wiqbt7Q9hUr1BgidlyxKt7ks5WN5zqmC@redis-10552.c328.europe-west3-1.gce.redns.redis-cloud.com:10552"
-            ],
+            "hosts": [("127.0.0.1", 6379)],
         },
     },
 }
@@ -134,7 +132,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
-    path.join(BASE_DIR, "static"),
+   path.join(BASE_DIR, "static"),
 ]
 
 # Default primary key field type
